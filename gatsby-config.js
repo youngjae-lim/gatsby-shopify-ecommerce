@@ -23,7 +23,7 @@ module.exports = {
           'open sans:800i',
         ],
       },
-    },
+    }, 
     {
       resolve: 'gatsby-source-shopify',
       options: {
