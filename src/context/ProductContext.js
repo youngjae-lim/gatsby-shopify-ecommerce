@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 const query = graphql`
   {
-    allShopifyCollection {
+    allShopifyCollection(sort: {fields: title, order: ASC}) {
       edges {
         node {
           title
