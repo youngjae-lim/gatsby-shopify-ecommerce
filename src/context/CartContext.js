@@ -27,11 +27,11 @@ export function CartContextProvider({ children }) {
     const getCheckout = async () => {
       if (checkoutId && typeof window !== 'undefined') {
         const fetchedCheckout = await client.checkout.fetch(checkoutId);
-        if (fetchedCheckout?.completedAt) {
+        if (fetchedCheckout?.completedAt) { // if the checkout is already completed
           localStorage.removeItem('checkout');
           setCheckout(null);
           setSuccessfulOrder(fetchedCheckout);
-        } else {
+        } else { // if the checkout is still not processed
           setCheckout(fetchedCheckout);
           localStorage.setItem('checkout', JSON.stringify(fetchedCheckout));
         }
@@ -55,22 +55,25 @@ export function CartContextProvider({ children }) {
       lineItem => lineItem.variant.id === variantId
     );
 
-    if (lineItemVariant) {
+    if (lineItemVariant) { // if the variant item is already in the cart
+      // update the existing quantity
       const newQuantity = lineItemVariant.quantity + quantity;
 
-      if (newQuantity) {
+      if (newQuantity) { // if there is a new quantity added to the existing item
+        // update the quantity
         newCheckout = await client.checkout.updateLineItems(newCheckout.id, [
           {
             id: lineItemVariant.id,
             quantity: newQuantity,
           },
         ]);
-      } else {
+      } else { // if the existing quantity gets down to zero
+        // remove the item from the cart
         newCheckout = await client.checkout.removeLineItems(newCheckout.id, [
           lineItemVariant.id,
         ]);
       }
-    } else {
+    } else { // if the item is a totally new variant, simply add it to the cart
       newCheckout = await client.checkout.addLineItems(newCheckout.id, [
         {
           variantId,
@@ -79,9 +82,10 @@ export function CartContextProvider({ children }) {
       ]);
     }
 
+    // update the checkout with the new quantity
     setCheckout(newCheckout);
     setSuccessfulOrder(null);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') { // only if the environment is with a browser DOM
       localStorage.setItem('checkout', JSON.stringify(newCheckout));
     }
   };
@@ -113,3 +117,5 @@ export function CartContextProvider({ children }) {
     </CartContext.Provider>
   );
 }
+
+// doc: https://www.npmjs.com/package/shopify-buy
