@@ -59,7 +59,7 @@ export function CartContextProvider({ children }) {
       // update the existing quantity
       const newQuantity = lineItemVariant.quantity + quantity;
 
-      if (newQuantity) { // if there is a new quantity added to the existing item
+      if (newQuantity) { // if there is a new quantity added to the existing item (newQuatity = 0 means falsey)
         // update the quantity
         newCheckout = await client.checkout.updateLineItems(newCheckout.id, [
           {
