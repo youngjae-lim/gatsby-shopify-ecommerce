@@ -24,6 +24,7 @@ export const Button = styled.button`
   color: black;
   border: 1px solid black;
   white-space: nowrap;
+  transition: 0.4s;
 
   ${fullWidthStyles}
   &:hover:not(:disabled) {
