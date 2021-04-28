@@ -12,10 +12,10 @@ const IndexPage = () => {
   const isFeatured = !!collections.find(
     collection => collection.title === 'Featured Hats'
   );
-  console.log(collections);
 
   return (
     <Layout>
+      <SEO title="Home" description="The Best Hat Store in Town" />
       <HomepageCollectionsGrid
         collections={collections.filter(
           collection => collection.title !== 'Featured Hats'

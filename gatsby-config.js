@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Shopify Starter`,
-    description: `Gatsby & Shopify Starter for the WebDevEducation course.`,
-    author: `@tomphill`,
+    title: `TopHatterHat`,
+    description: `We are crazy about hats`,
+    author: `Youngjae Lim`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -23,7 +23,7 @@ module.exports = {
           'open sans:800i',
         ],
       },
-    }, 
+    },
     {
       resolve: 'gatsby-source-shopify',
       options: {
