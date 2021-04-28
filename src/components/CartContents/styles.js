@@ -44,3 +44,12 @@ export const CartFooter = styled.div`
     }
   }
 `
+
+export const Footer =styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  > div:last-child {
+    text-align: right;
+  }
+`
