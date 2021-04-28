@@ -5,7 +5,6 @@ import CartContext from 'context/CartContext';
 
 export function Cart() {
   const { checkout } = useContext(CartContext);
-  console.log(checkout); // TODO: delete later
 
   let totalQuantity = 0;
   if (checkout) {

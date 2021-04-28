@@ -6,8 +6,6 @@ import { FiltersWrapper } from './styles';
 export function Filters() {
   const { collections } = useContext(ProductContext);
 
-  console.log(collections)
-
   return (
     <FiltersWrapper>
       <strong>Categories</strong>
