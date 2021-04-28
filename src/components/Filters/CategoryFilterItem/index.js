@@ -17,6 +17,9 @@ export function CategoryFilterItem({ title, collectionId }) {
   // check if the collection is already checked
   const alreadySelected = queryStringIds?.find(qsId => qsId === collectionId);
 
+  // Get a search term
+  const searchTerm = qs.s;
+
   const onClick = () => {
     let navigateTo = '/all-products';
 
@@ -33,8 +36,16 @@ export function CategoryFilterItem({ title, collectionId }) {
       newIds = queryStringIds.map(checkedId => encodeURIComponent(checkedId));
     }
 
-    if (newIds.length) {
+    if (newIds.length && !searchTerm) {
       navigate(`${navigateTo}?c=${newIds.join(',')}`);
+    } else if (newIds.length && !!searchTerm) {
+      navigate(
+        `${navigateTo}?c=${newIds.join(',')}&s=${encodeURIComponent(
+          searchTerm
+        )}`
+      );
+    } else if (!newIds.length && !!searchTerm) {
+      navigate(`${navigateTo}?s=${encodeURIComponent(searchTerm)}`);
     } else {
       navigate(`${navigateTo}`);
     }
