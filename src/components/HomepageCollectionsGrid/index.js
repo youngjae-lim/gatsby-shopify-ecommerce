@@ -18,6 +18,9 @@ export function HomepageCollectionsGrid({ collections }) {
           description={saleCollection.description}
           backgroundImage={saleCollection.image.localFile.childImageSharp.fluid}
           sale
+          destination={`/all-products/?c=${encodeURIComponent(
+            saleCollection.shopifyId
+          )}`}
         />
       )}
       <RemainingCollections>
@@ -27,6 +30,9 @@ export function HomepageCollectionsGrid({ collections }) {
             description={collection.description}
             backgroundImage={collection.image.localFile.childImageSharp.fluid}
             key={collection.shopifyId}
+            destination={`/all-products/?c=${encodeURIComponent(
+              collection.shopifyId
+            )}`}
           />
         ))}
       </RemainingCollections>
