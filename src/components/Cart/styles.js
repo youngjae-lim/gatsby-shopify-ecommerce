@@ -7,7 +7,7 @@ export const CartWrapper = styled(StyledLink).attrs(() => ({
   display: flex;
   color: black;
   text-decoration: none;
-  padding-left: 16px;
+  padding: 10px 2px;
 
   > svg {
     margin: auto 0;

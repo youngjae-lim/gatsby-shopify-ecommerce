@@ -12,5 +12,17 @@ export const Input = styled.input`
   min-width: 0;
   &:focus {
     border-color: black;
+  }  
+  
+  @media(min-width: 368px) {
+    min-width: 300px;
+  }
+
+  @media(min-width: 768px) {
+    min-width: 500px;
+  }
+
+  @media(min-width: 1024px) {
+    min-width: 700px;
   }
 `;

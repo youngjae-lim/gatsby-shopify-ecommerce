@@ -9,7 +9,7 @@ const Content = styled.div`
   display: grid;
   grid-gap: 20px;
   margin-top: 20px;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr;
 `;
 
 export default function AllProducts() {
